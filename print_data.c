@@ -25,12 +25,12 @@ int main(int argc, char *argv[])
 		if (strcmp(argv[i], "-f") == 0)
 		{
 			strcpy(in_name, argv[++i]);
-			printf ("File name: %s\n", in_name);
+			printf ("#File name: %s\n", in_name);
 		}
 		else if (strcmp(argv[i], "-sub") == 0)
 		{
 			sub = atoi(argv[++i]);
-			printf ("Print out data of sub-integration: %d\n", sub);
+			printf ("#Print out data of sub-integration: %d\n", sub);
 		}
 	}
 

@@ -180,7 +180,7 @@ void read_PSRFITS_files(search_mode *s, char *fname)
     // Is the data in search mode?
     //fits_read_key(s->fitsfiles[ii], TSTRING, "OBS_MODE", ctmp, comment, &status);
     fits_read_key(fp, TSTRING, "OBS_MODE", ctmp, comment, &status);
-    printf ("Mode: %s\n", ctmp);
+    printf ("#Mode: %s\n", ctmp);
 
     // Quick fix for Parkes DFB data (SRCH?  why????)...
     if (strcmp("SRCH", ctmp) == 0) {
@@ -196,7 +196,7 @@ void read_PSRFITS_files(search_mode *s, char *fname)
     // Now get the stuff we need from the primary HDU header
     //fits_read_key(s->fitsfiles[ii], TSTRING, "TELESCOP", ctmp, comment, &status);
     fits_read_key(fp, TSTRING, "TELESCOP", ctmp, comment, &status);
-    printf ("Telescope: %s\n", ctmp);
+    printf ("#Telescope: %s\n", ctmp);
 
     fits_read_key(fp, TSTRING, "STT_IMJD", ctmp, comment, &status);
     s->imjd = atof(ctmp);
@@ -204,7 +204,7 @@ void read_PSRFITS_files(search_mode *s, char *fname)
     s->smjd = atof(ctmp);
 
     s->mjd0 = s->imjd + s->smjd/86400.0L;
-    printf ("Start MJD: %Lf %Lf %Lf\n", s->imjd, s->smjd, s->mjd0);
+    printf ("#Start MJD: %Lf %Lf %Lf\n", s->imjd, s->smjd, s->mjd0);
 
     // Now switch to the SUBINT HDU header
     fits_movnam_hdu(fp, BINARY_TBL, "SUBINT", 0, &status);
@@ -225,7 +225,7 @@ void read_PSRFITS_files(search_mode *s, char *fname)
     s->tsample = atof(ctmp);
     //printf("test here %s\n", ctmp);
 
-    printf ("NSUB: %d; NCHAN: %d; NSBLK: %d; NBITS: %d; TSAMP: %lf\n", s->nsub, s->nchan, s->nsblk, s->nbit, s->tsample);
+    printf ("#NSUB: %d; NCHAN: %d; NSBLK: %d; NBITS: %d; TSAMP: %lf\n", s->nsub, s->nchan, s->nsblk, s->nbit, s->tsample);
 
     // Observing frequencies
     //double *freqs;
